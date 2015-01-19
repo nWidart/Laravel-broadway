@@ -1,0 +1,30 @@
+{
+  "name": "nwidart/laravel-broadway",
+  "description": "A Laravel adapter for the Broadway ES/CQRS package.",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "broadway",
+    "event sourcing",
+    "ES",
+    "CQRS",
+    "Domain Driven Design",
+    "DDD"
+  ],
+  "authors": [
+    {
+      "name": "Nicolas Widart",
+      "email": "n.widart@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "4.2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nwidart\\LaravelBroadway\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
