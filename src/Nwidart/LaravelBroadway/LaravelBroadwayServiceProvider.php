@@ -6,6 +6,8 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->package('nwidart/laravel-broadway');
+
         $this->app->register('Nwidart\LaravelBroadway\Broadway\EventServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\CommandServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider');
