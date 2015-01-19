@@ -4,6 +4,8 @@ Laravel Broadway is an adapter for the [Broadway](https://github.com/qandidate-l
 
 It binds all needed interfaces for Broadway.
 
+For reference, I've built a [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) that uses this package and some event sourcing techniques. 
+
 ## Installation
 
 ### Install via composer
