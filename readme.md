@@ -71,4 +71,12 @@ Or choice to use only the Service providers you need. Don't know what you need ?
     'Nwidart\LaravelBroadway\Broadway\SupportServiceProvider'
     ```
 
+### (optional) Publish configuration
+
+
+```
+php artisan config:publish nwidart/laravel-broadway
+```
+
+
 ## [License (MIT)](/LICENSE.md)
