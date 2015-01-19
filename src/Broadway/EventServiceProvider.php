@@ -30,7 +30,7 @@ class EventServiceProvider extends ServiceProvider
         try {
             $subscribers = $this->app['broadway.event-subscribers'];
         } catch (\ReflectionException $e) {
-            dd('fallback to other places where event subscribes could be defined');
+            // fallback to other places where event subscribes could be defined
         }
 
         foreach ($subscribers as $projector => $repository) {
