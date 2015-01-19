@@ -27,7 +27,7 @@ You have a choice here, you can either use the main Service Provider which will 
 - [ElasticSearch](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/ElasticSearchServiceProvider.php)
 - [Support](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/SupportServiceProvider.php) (UuidGenerators,...)
 
-Or choice to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
+Or choose to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
 
 #### Global Service Provider
  
