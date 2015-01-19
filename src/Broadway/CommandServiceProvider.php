@@ -26,6 +26,7 @@ class CommandServiceProvider extends ServiceProvider
             $subscribers = $this->app['broadway.command-subscribers'];
         } catch (\ReflectionException $e) {
             // fallback to other places where command subscribes could be defined
+            $subscribers = [];
         }
 
         foreach ($subscribers as $handler => $eventStoreRepository) {

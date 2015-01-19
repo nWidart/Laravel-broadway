@@ -31,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
             $subscribers = $this->app['broadway.event-subscribers'];
         } catch (\ReflectionException $e) {
             // fallback to other places where event subscribes could be defined
+            $subscribers = [];
         }
 
         foreach ($subscribers as $projector => $repository) {
