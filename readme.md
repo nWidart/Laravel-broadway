@@ -18,12 +18,12 @@ To finish the installation you need to add the service providers.
 
 You have a choice here, you can either use the main Service Provider which will load the following:
  
-- CommandBus
-- EventBus
-- Serializers
-- EventStorage
-- ElasticSearch
-- Support (UuidGenerators,...)
+- [CommandBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/CommandServiceProvider.php)
+- [EventBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/EventServiceProvider.php)
+- [Serializers](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/SerializersServiceProvider.php)
+- [EventStorage](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/EventStorageServiceProvider.php)
+- [ElasticSearch](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/ElasticSearchServiceProvider.php)
+- [Support](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/SupportServiceProvider.php) (UuidGenerators,...)
 
 Or choice to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
 
