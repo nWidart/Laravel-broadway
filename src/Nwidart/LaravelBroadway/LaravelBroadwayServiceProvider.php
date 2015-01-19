@@ -13,5 +13,6 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->app->register('Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\SupportServiceProvider');
+        $this->app->register('Nwidart\LaravelBroadway\Broadway\ElasticSearchServiceProvider');
     }
 }
