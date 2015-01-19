@@ -22,6 +22,7 @@ You have a choice here, you can either use the main Service Provider which will 
 - EventBus
 - Serializers
 - EventStorage
+- ElasticSearch
 - Support (UuidGenerators,...)
 
 Or choice to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
@@ -56,6 +57,12 @@ Or choice to use only the Service providers you need. Don't know what you need ?
 
     ``` php
     'Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider'
+    ```
+
+- ElasticSearch
+
+    ``` php
+    'Nwidart\LaravelBroadway\Broadway\ElasticSearchServiceProvider'
     ```
 
 - Support
