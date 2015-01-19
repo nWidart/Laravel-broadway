@@ -31,29 +31,33 @@ Or choice to use only the Service providers you need. Don't know what you need ?
  ``` php
     'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider'
  ```
- 
- #### Separate Service Provider
+
+#### Separate Service Provider
  
  - CommandBus
  
     ``` php
     'Nwidart\LaravelBroadway\Broadway\CommandServiceProvider'
     ```
+    
 - EventBus
 
     ``` php
     'Nwidart\LaravelBroadway\Broadway\EventServiceProvider'
     ```
+
 - Serializers
 
     ``` php
     'Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider'
     ```
+
 - EventStorage
 
     ``` php
     'Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider'
     ```
+
 - Support
 
     ``` php
