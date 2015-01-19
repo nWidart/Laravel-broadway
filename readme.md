@@ -32,7 +32,7 @@ Or choice to use only the Service providers you need. Don't know what you need ?
     'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider'
  ```
 
-#### Separate Service Provider
+#### Separate Service Providers
  
  - CommandBus
  
