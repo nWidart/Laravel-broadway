@@ -16,6 +16,7 @@ class EventStorageServiceProvider extends ServiceProvider
             $connection = DriverManager::getConnection($connectionParams, $configuration);
             $payloadSerializer = $app['Broadway\Serializer\SerializerInterface'];
             $metadataSerializer = $app['Broadway\Serializer\SerializerInterface'];
+
             return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, 'event_store');
         });
     }

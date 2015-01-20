@@ -10,7 +10,7 @@ class ElasticSearchServiceProvider extends ServiceProvider
         $driver = $this->app['config']->get('laravel-broadway::read-model');
         $config = $this->app['config']->get("laravel-broadway::read-model-connections.{$driver}.config");
 
-        $this->app->singleton('elastic-search', function() use ($config) {
+        $this->app->singleton('elastic-search', function () use ($config) {
             return new Client($config);
         });
     }
