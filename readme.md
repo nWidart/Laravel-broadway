@@ -87,6 +87,12 @@ Or choose to use only the Service providers you need. Don't know what you need ?
 php artisan config:publish nwidart/laravel-broadway
 ```
 
+## Coming features
+
+- [ ] Command to migrate the event store table
+
+
+***
 
 ## [Changelog](/CHANGELOG.md)
 ## [License (MIT)](/LICENSE.md)
