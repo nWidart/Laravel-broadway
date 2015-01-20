@@ -11,11 +11,10 @@ class CreateEventStoreCommand extends Command
 
     public function fire()
     {
-        if ($table = $this->argument('table')) {
-            $this->laravel->config['laravel-broadway::event-store-table'] = $table;
-        }
+        $table = $this->argument('table');
+        $this->laravel->config['laravel-broadway::event-store-table'] = $table;
 
-        $this->call('migrate', ['--bench' => 'nwidart/laravel-broadway']);
+        $this->call('migrate', ['--package' => 'nwidart/laravel-broadway']);
 
         $table = $this->laravel->config['laravel-broadway::event-store-table'];
         $this->info("Table [$table] created!");
@@ -24,7 +23,7 @@ class CreateEventStoreCommand extends Command
     protected function getArguments()
     {
         return [
-            ['table', InputArgument::OPTIONAL, 'Override the event store table name']
+            ['table', InputArgument::REQUIRED, 'Override the event store table name']
         ];
     }
 }
