@@ -88,4 +88,5 @@ php artisan config:publish nwidart/laravel-broadway
 ```
 
 
+## [Changelog (MIT)](/CHANGELOG.md)
 ## [License (MIT)](/LICENSE.md)
