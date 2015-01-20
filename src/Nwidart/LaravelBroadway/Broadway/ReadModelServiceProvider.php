@@ -3,7 +3,7 @@
 use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
 
-class ElasticSearchServiceProvider extends ServiceProvider
+class ReadModelServiceProvider extends ServiceProvider
 {
     public function register()
     {
