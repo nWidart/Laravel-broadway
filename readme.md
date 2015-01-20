@@ -1,5 +1,8 @@
 # Laravel Broadway
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/092c1ed2-24a2-4aac-bf91-822dc9df98e4/mini.png)](https://insight.sensiolabs.com/projects/092c1ed2-24a2-4aac-bf91-822dc9df98e4)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nWidart/Laravel-broadway/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nWidart/Laravel-broadway/?branch=master)
+
 Laravel Broadway is an adapter for the [Broadway](https://github.com/qandidate-labs/broadway/) package.
 
 It binds all needed interfaces for Broadway.
