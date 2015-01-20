@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - New command: `php artisan broadway:event-store:migrate table_name` to create the event store table
+- Read Model: A factory is now instantiating the read model implementation based on the setting 
 
 ### Changed
 
