@@ -7,11 +7,15 @@ class ReadModelServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $driver = $this->app['config']->get('laravel-broadway::read-model');
-        $config = $this->app['config']->get("laravel-broadway::read-model-connections.{$driver}.config");
+        $this->app->bind(
+            'Nwidart\LaravelBroadway\ReadModel\ReadModelFactory',
+            'Nwidart\LaravelBroadway\ReadModel\Broadway\BroadwayReadModelFactory'
+        );
 
-        $this->app->singleton('Elasticsearch', function () use ($config) {
-            return new Client($config);
+        $this->app->singleton('Elasticsearch', function ($app) {
+            $driver = $app['config']->get('laravel-broadway::read-model');
+
+            return $app['Nwidart\LaravelBroadway\ReadModel\ReadModelFactory']->make($driver)->getDriver();
         });
     }
 }
