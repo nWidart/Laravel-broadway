@@ -2,6 +2,10 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/092c1ed2-24a2-4aac-bf91-822dc9df98e4/mini.png)](https://insight.sensiolabs.com/projects/092c1ed2-24a2-4aac-bf91-822dc9df98e4)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nWidart/Laravel-broadway/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nWidart/Laravel-broadway/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/nwidart/laravel-broadway/version.svg)](https://packagist.org/packages/nwidart/laravel-broadway)
+[![Total Downloads](https://poser.pugx.org/nwidart/laravel-broadway/downloads.svg)](https://packagist.org/packages/nwidart/laravel-broadway)
+[![Latest Unstable Version](https://poser.pugx.org/nwidart/laravel-broadway/v/unstable.svg)](//packagist.org/packages/nwidart/laravel-broadway)
+[![License](https://poser.pugx.org/nwidart/laravel-broadway/license.svg)](https://packagist.org/packages/nwidart/laravel-broadway)
 
 Laravel Broadway is an adapter for the [Broadway](https://github.com/qandidate-labs/broadway/) package.
 
