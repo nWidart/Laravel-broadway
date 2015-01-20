@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,7 +19,7 @@ class CreateEventStoreTable extends Migration
 
     public function up()
     {
-        Schema::create($this->eventStoreTableName, function($table)
+        Schema::create($this->eventStoreTableName, function(Blueprint $table)
         {
             $table->string('uuid', 255);
             $table->string('playhead', 255);
