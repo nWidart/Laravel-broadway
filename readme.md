@@ -87,13 +87,32 @@ Or choose to use only the Service providers you need. Don't know what you need ?
 php artisan config:publish nwidart/laravel-broadway
 ```
 
-## Event Store
+
+## Configuration
+
+### Event Store
 
 To create the event store you can call the following command:
 
 ```
 php artisan broadway:event-store:migrate table_name
 ```
+
+### Read Model
+
+To set a read model in your application you first need to set the wanted read model in the package configuration. 
+
+Once that's done you can bind a ReadModelRepository like so:
+
+
+``` php
+$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
+    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+    return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
+});
+```
+
+See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) and specifically the [Service Provider](https://github.com/nWidart/Laravel-Broadway-Demo/blob/master/Modules/Parts/PartServiceProvider.php) for an working example.
 
 
 ## Coming features
