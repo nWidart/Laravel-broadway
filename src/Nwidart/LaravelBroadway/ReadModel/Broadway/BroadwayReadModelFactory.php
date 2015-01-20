@@ -10,7 +10,7 @@ class BroadwayReadModelFactory implements ReadModelFactory
      */
     public function make($driver)
     {
-        $driver = ucfirst($driver);
+        $driver = 'Nwidart\LaravelBroadway\ReadModel\Broadway\Drivers\\' . ucfirst($driver);
 
         return new $driver;
     }
