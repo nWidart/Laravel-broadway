@@ -3,6 +3,7 @@
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Illuminate\Support\ServiceProvider;
+use Nwidart\LaravelBroadway\Commands\CreateEventStoreCommand;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,8 @@ class EventServiceProvider extends ServiceProvider
         $this->app->singleton('Broadway\EventHandling\EventBusInterface', function () {
             return new SimpleEventBus();
         });
+
+        $this->registerCommands();
     }
 
     public function boot()
@@ -39,5 +42,18 @@ class EventServiceProvider extends ServiceProvider
             $projector = new $projector($repository);
             $this->app['Broadway\EventHandling\EventBusInterface']->subscribe($projector);
         }
+    }
+
+    /**
+     * Register artisan command to generate the event store table
+     */
+    private function registerCommands()
+    {
+        $this->app['laravel-broadway::migrate'] = $this->app->share(function()
+        {
+            return new CreateEventStoreCommand();
+        });
+
+        $this->commands('laravel-broadway::migrate');
     }
 }
