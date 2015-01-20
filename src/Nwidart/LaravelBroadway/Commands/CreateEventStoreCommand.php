@@ -1,6 +1,8 @@
 <?php namespace Nwidart\LaravelBroadway\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\InputArgument;
 
 class CreateEventStoreCommand extends Command
 {
@@ -9,8 +11,20 @@ class CreateEventStoreCommand extends Command
 
     public function fire()
     {
-        $this->call('migrate', ['--package' => 'nwidart/laravel-broadway']);
+        if ($table = $this->argument('table')) {
+            $this->laravel->config['laravel-broadway::event-store-table'] = $table;
+        }
 
-        $this->info('Event Store table created');
+        $this->call('migrate', ['--bench' => 'nwidart/laravel-broadway']);
+
+        $table = $this->laravel->config['laravel-broadway::event-store-table'];
+        $this->info("Table [$table] created!");
+    }
+
+    protected function getArguments()
+    {
+        return [
+            ['table', InputArgument::OPTIONAL, 'Override the event store table name']
+        ];
     }
 }
