@@ -1,6 +1,5 @@
 <?php namespace Nwidart\LaravelBroadway\Broadway;
 
-use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
 
 class ReadModelServiceProvider extends ServiceProvider
@@ -12,9 +11,9 @@ class ReadModelServiceProvider extends ServiceProvider
             'Nwidart\LaravelBroadway\ReadModel\Broadway\BroadwayReadModelFactory'
         );
 
-        $this->app->singleton('Elasticsearch', function ($app) {
-            $driver = $app['config']->get('laravel-broadway::read-model');
+        $driver = $this->app['config']->get('laravel-broadway::read-model');
 
+        $this->app->singleton(ucfirst($driver), function ($app) use ($driver) {
             return $app['Nwidart\LaravelBroadway\ReadModel\ReadModelFactory']->make($driver)->getDriver();
         });
     }
