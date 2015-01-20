@@ -92,7 +92,7 @@ php artisan config:publish nwidart/laravel-broadway
 To create the event store you can call the following command:
 
 ```
-php artisan broadway:migrate table_name
+php artisan broadway:event-store:migrate table_name
 ```
 
 

@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- New command: `php artisan broadway:migrate table_name` to create the event store table
+- New command: `php artisan broadway:event-store:migrate table_name` to create the event store table
 
 ### Changed
 
