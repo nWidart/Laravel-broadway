@@ -112,6 +112,17 @@ $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function 
 });
 ```
 
+For an In Memory read model as an example:
+
+``` php
+$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
+    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+    return new InMemoryReadModelPartRepository($app['Inmemory'], $serializer);
+});
+```
+
+
+
 See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) and specifically the [Service Provider](https://github.com/nWidart/Laravel-Broadway-Demo/blob/master/Modules/Parts/PartServiceProvider.php) for an working example.
 
 
