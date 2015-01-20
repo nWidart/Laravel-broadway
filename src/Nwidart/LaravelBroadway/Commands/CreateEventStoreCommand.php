@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class CreateEventStoreCommand extends Command
 {
-    protected $name = 'broadway:migrate';
+    protected $name = 'broadway:event-store:migrate';
     protected $description = 'This will create the events store table based on the name in the configuration';
 
     public function fire()
