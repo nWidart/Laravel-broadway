@@ -97,6 +97,16 @@ To create the event store you can call the following command:
 ```
 php artisan broadway:event-store:migrate table_name
 ```
+In the configuration file, you can choose which driver to use as an event store.
+
+``` php
+'event-store' => [
+    'table' => 'event_store',
+    'driver' => 'dbal'
+],
+```
+
+
 
 ### Read Model
 
