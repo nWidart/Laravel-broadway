@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [0.2.0]() - T.B.D.
 
+### Added
+
+- New command: `php artisan broadway:migrate` to create the event store table
+
 ### Changed
 
 - IoC key name of the Elasticsearch client from `elastic-search` to `Elasticsearch`
