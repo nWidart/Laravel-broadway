@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'read-model' => 'elastic-search',
+    'read-model' => 'elasticsearch',
     'read-model-connections' => [
-        'elastic-search' => [
+        'elasticsearch' => [
             'config' => [
                 'hosts' => ['localhost:9200'],
             ],
