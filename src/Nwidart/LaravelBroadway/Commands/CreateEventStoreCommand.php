@@ -1,7 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Input\InputArgument;
 
 class CreateEventStoreCommand extends Command
