@@ -89,7 +89,7 @@ php artisan config:publish nwidart/laravel-broadway
 
 ## Coming features
 
-- [ ] Command to migrate the event store table
+- [x] Command to migrate the event store table
 - [ ] Allow for multiple read models implementations using a factory
 
 
