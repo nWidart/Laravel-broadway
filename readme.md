@@ -87,6 +87,15 @@ Or choose to use only the Service providers you need. Don't know what you need ?
 php artisan config:publish nwidart/laravel-broadway
 ```
 
+## Event Store
+
+To create the event store you can call the following command:
+
+```
+php artisan broadway:migrate table_name
+```
+
+
 ## Coming features
 
 - [x] Command to migrate the event store table
