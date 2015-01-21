@@ -1,12 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [0.3.0]() - T.B.D
+## [0.2.1]() - T.B.D
 
 ### Changed
 
 - Composer: Adding a prefer stable option in `composer.json`
 - Composer: Adding Elasticsearch package as a suggested package. Not included by default.
+
 
 ## [0.2.0](https://github.com/nWidart/Laravel-broadway/releases/tag/0.2) - 2015-01-20
 
