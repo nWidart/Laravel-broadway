@@ -121,7 +121,7 @@ $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function
 
 To set a read model in your application you first need to set the wanted read model in the package configuration. 
 
-Once that's done you can bind you **ReadModelRepository** in a Service Provider like so:
+Once that's done you can bind your **ReadModelRepositories** in a Service Provider like so:
 
 
 ``` php
