@@ -144,7 +144,7 @@ $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function 
 
 
 
-See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) and specifically the [Service Provider](https://github.com/nWidart/Laravel-Broadway-Demo/blob/master/Modules/Parts/PartServiceProvider.php) for an working example.
+See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) and specifically the [Service Provider](https://github.com/nWidart/Laravel-Broadway-Demo/blob/master/Modules/Parts/PartServiceProvider.php) for a working example.
 
 
 ***
