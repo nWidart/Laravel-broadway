@@ -147,6 +147,32 @@ $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function 
 See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) and specifically the [Service Provider](https://github.com/nWidart/Laravel-Broadway-Demo/blob/master/Modules/Parts/PartServiceProvider.php) for a working example.
 
 
+## Registering subscribers
+
+### Commands
+
+To let broadway know which handlers are available you need to bind in the Laravel IoC container a key named `broadway.command-subscribers` as a singleton. 
+
+It's important to know Command Handlers classes in broadway need to get a Event Store repository injected. 
+
+So when binding command handlers in the IoC container you have to return an array of:
+
+- key: command handler fully qualified class name
+- value: the fully qualified class name of the event store repository
+
+Like so:
+
+``` php
+ $this->app->singleton('broadway.command-subscribers', function() {
+    return [
+        PartCommandHandler::class => 'Modules\Parts\Repositories\EventStorePartRepository'
+    ];
+});
+```
+
+
+
+
 ***
 
 ## [Changelog](/CHANGELOG.md)
