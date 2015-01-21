@@ -149,7 +149,7 @@ See the [demo laravel application](https://github.com/nWidart/Laravel-Broadway-D
 
 ## Registering subscribers
 
-### Commands
+### Command handlers
 
 To let broadway know which handlers are available you need to bind in the Laravel IoC container a key named `broadway.command-subscribers` as a singleton. 
 
@@ -169,6 +169,22 @@ Like so:
     ];
 });
 ```
+
+### Event subscribers
+
+This is pretty much the same as the command handlers, except that the event subscriber (or listener) needs an Read Model repository.
+
+Example:
+
+``` php
+ $this->app->singleton('broadway.event-subscribers', function() {
+    return [
+        PartsThatWereManufacturedProjector::class => 'Modules\Parts\Repositories\ReadModelPartRepository'
+    ];
+});
+```
+
+All the rest are conventions from the Broadway package.
 
 
 
