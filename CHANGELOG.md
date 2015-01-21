@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.0]() - T.B.D
+
+### Changed
+
+- Adding a prefer stable option in `composer.json`
+
+
 ## [0.2.0](https://github.com/nWidart/Laravel-broadway/releases/tag/0.2) - 2015-01-20
 
 ### Added

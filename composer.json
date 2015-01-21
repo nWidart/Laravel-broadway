@@ -31,5 +31,6 @@
       "Nwidart\\LaravelBroadway\\": "src/Nwidart/LaravelBroadway"
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
