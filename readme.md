@@ -116,6 +116,8 @@ $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function
 });
 ```
 
+For an in memory Event Store, all you need to do is change the driver in the configuration file and probably add a new event store repository implementation with an adequate name.
+
 
 ### Read Model
 
