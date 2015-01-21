@@ -18,7 +18,7 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=~0.1
+composer require nwidart/laravel-broadway=~0.2
 ```
 
 ### Service Providers
