@@ -106,13 +106,22 @@ In the configuration file, you can choose which driver to use as an event store.
 ],
 ```
 
+Once done, you can bind your **EventStoreRepositories** in a Service Provider like so:
+
+``` php
+$this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
+    $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
+    $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+    return new MysqlEventStorePartRepository($eventStore, $eventBus);
+});
+```
 
 
 ### Read Model
 
 To set a read model in your application you first need to set the wanted read model in the package configuration. 
 
-Once that's done you can bind a ReadModelRepository like so:
+Once that's done you can bind you **ReadModelRepository** in a Service Provider like so:
 
 
 ``` php
