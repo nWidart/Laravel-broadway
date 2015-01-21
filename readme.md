@@ -68,10 +68,10 @@ Or choose to use only the Service providers you need. Don't know what you need ?
     'Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider'
     ```
 
-- ElasticSearch
+- ReadModel
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\ElasticSearchServiceProvider'
+    'Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider'
     ```
 
 - Support
