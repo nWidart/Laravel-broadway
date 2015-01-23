@@ -3,7 +3,7 @@
 interface EventStoreFactory
 {
     /**
-     * @param string $driver
+     * @param  string                                     $driver
      * @return \Nwidart\LaravelBroadway\EventStore\Driver
      */
     public function make($driver);

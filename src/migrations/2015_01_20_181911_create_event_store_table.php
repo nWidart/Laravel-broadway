@@ -19,8 +19,7 @@ class CreateEventStoreTable extends Migration
 
     public function up()
     {
-        Schema::create($this->eventStoreTableName, function(Blueprint $table)
-        {
+        Schema::create($this->eventStoreTableName, function (Blueprint $table) {
             $table->string('uuid', 255);
             $table->string('playhead', 255);
             $table->string('metadata', 255);

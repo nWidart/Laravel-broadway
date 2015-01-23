@@ -49,8 +49,7 @@ class EventServiceProvider extends ServiceProvider
      */
     private function registerCommands()
     {
-        $this->app['laravel-broadway::event-store::migrate'] = $this->app->share(function()
-        {
+        $this->app['laravel-broadway::event-store::migrate'] = $this->app->share(function () {
             return new CreateEventStoreCommand();
         });
 

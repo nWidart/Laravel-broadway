@@ -3,7 +3,7 @@
 interface ReadModelFactory
 {
     /**
-     * @param string $driver
+     * @param  string                                    $driver
      * @return \Nwidart\LaravelBroadway\ReadModel\Driver
      */
     public function make($driver);
