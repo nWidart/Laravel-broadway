@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [0.2.1]() - T.B.D
 
+### Added
+
+- Migration: Event Store table now has an id column auto incremented. 
+- Migration: Event Store table now has a uniqueness constraint on the `uuid` and `playhead`
+
 ### Changed
 
 - Composer: Adding a prefer stable option in `composer.json`
