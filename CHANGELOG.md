@@ -1,7 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [0.2.1]() - T.B.D
+## [0.x.x]() - T.B.D.
+
+
+## [0.2.1](https://github.com/nWidart/Laravel-broadway/releases/tag/0.2.1) - 2015-01-28
 
 ### Added
 
