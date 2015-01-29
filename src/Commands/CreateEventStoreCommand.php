@@ -13,9 +13,12 @@ class CreateEventStoreCommand extends Command
         $table = $this->argument('table');
         $this->laravel->config['laravel-broadway::event-store-table'] = $table;
 
-        $this->call('migrate', ['--package' => 'nwidart/laravel-broadway']);
+        $migrations = app('migration.repository');
+        $migrations->createRepository();
 
-        $table = $this->laravel->config['laravel-broadway::event-store-table'];
+        $migrator = app('migrator');
+        $migrator->run(__DIR__.'/../migrations');
+
         $this->info("Table [$table] created!");
     }
 
