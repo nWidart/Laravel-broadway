@@ -14,7 +14,7 @@ class CreateEventStoreTable extends Migration
 
     public function __construct()
     {
-        $this->eventStoreTableName = Config::get('laravel-broadway::event-store-table', 'event_store');
+        $this->eventStoreTableName = Config::get('broadway.event-store-table', 'event_store');
     }
 
     public function up()
