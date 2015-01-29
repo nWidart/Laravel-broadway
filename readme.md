@@ -82,7 +82,7 @@ Or choose to use only the Service providers you need. Don't know what you need ?
     'Nwidart\LaravelBroadway\Broadway\SupportServiceProvider'
     ```
 
-### Publish configuration file and migration
+### (Optional) Publish configuration file and migration
 
 ```
 php artisan vendor:publish
@@ -91,9 +91,15 @@ php artisan vendor:publish
 This will publish a `config/broadway.php` file and a `database/migrations/create_event_store_table.php` file.
 
 
-### Run migration
+### (Optional) Run migration
 
 Last step, run the migration that was published in the last step to create the event_store table.
+
+If you haven't published the vendor files, you can use the command explained below:
+
+```
+php artisan broadway:event-store:migrate table_name
+```
 
 ## Configuration
 
