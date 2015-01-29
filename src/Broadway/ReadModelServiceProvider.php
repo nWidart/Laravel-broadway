@@ -11,7 +11,7 @@ class ReadModelServiceProvider extends ServiceProvider
             'Nwidart\LaravelBroadway\ReadModel\Broadway\BroadwayReadModelFactory'
         );
 
-        $driver = $this->app['config']->get('laravel-broadway::read-model');
+        $driver = $this->app['config']->get('broadway.read-model');
 
         $this->app->singleton(ucfirst($driver), function ($app) use ($driver) {
             return $app['Nwidart\LaravelBroadway\ReadModel\ReadModelFactory']->make($driver)->getDriver();

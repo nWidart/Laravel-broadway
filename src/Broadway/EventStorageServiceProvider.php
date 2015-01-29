@@ -12,7 +12,7 @@ class EventStorageServiceProvider extends ServiceProvider
         );
 
         $this->app->bind('Broadway\EventStore\EventStoreInterface', function ($app) {
-            $driver = $app['config']->get('laravel-broadway::event-store.driver');
+            $driver = $app['config']->get('broadway.event-store.driver');
 
             return $app['Nwidart\LaravelBroadway\EventStore\EventStoreFactory']->make($driver)->getDriver();
         });
