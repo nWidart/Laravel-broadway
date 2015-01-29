@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Nwidart\\LaravelBroadway\\": "src/Nwidart/LaravelBroadway"
+      "Nwidart\\LaravelBroadway\\": "src/"
     }
   },
   "suggest": {
