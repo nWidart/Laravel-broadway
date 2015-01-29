@@ -18,7 +18,7 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=~0.2
+composer require nwidart/laravel-broadway=dev-develop
 ```
 
 ### Service Providers
@@ -80,13 +80,18 @@ Or choose to use only the Service providers you need. Don't know what you need ?
     'Nwidart\LaravelBroadway\Broadway\SupportServiceProvider'
     ```
 
-### (optional) Publish configuration
-
+### Publish configuration file and migration
 
 ```
-php artisan config:publish nwidart/laravel-broadway
+php artisan vendor:publish
 ```
 
+This will publish a `config/broadway.php` file and a `database/migrations/create_event_store_table.php` file.
+
+
+### Run migration
+
+Last step, run the migration that was published in the last step to create the event_store table.
 
 ## Configuration
 
