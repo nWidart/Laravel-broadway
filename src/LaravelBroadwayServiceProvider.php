@@ -10,8 +10,6 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($configPath, 'broadway');
         $this->publishes([$configPath => config_path('broadway.php')]);
 
-        dd(config('broadway.event-store'));
-
         $this->app->register('Nwidart\LaravelBroadway\Broadway\EventServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\CommandServiceProvider');
         $this->app->register('Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider');
