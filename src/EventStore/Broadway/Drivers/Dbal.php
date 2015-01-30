@@ -31,6 +31,11 @@ class Dbal implements Driver
 
         $table = $this->config->get('broadway.event-store.table', 'event_store');
 
+        $app = app();
+        $app->singleton('Doctrine\DBAL\Connection', function() use ($connection) {
+            return $connection;
+        });
+
         return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table);
     }
 
