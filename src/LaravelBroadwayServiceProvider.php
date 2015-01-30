@@ -23,7 +23,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
      */
     private function registerConfiguration()
     {
-        $configPath = __DIR__ . '/../config/broadway.php';
+        $configPath = __DIR__.'/../config/broadway.php';
         $this->mergeConfigFrom($configPath, 'broadway');
         $this->publishes([$configPath => config_path('broadway.php')]);
     }
@@ -34,7 +34,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
     private function registerMigrations()
     {
         $this->publishes([
-            __DIR__.'/../migrations' => base_path('database/migrations')
+            __DIR__.'/../migrations' => base_path('database/migrations'),
         ]);
     }
 }
