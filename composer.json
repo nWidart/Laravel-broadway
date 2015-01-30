@@ -19,7 +19,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "mitchellvanw/laravel-doctrine": "~0.5",
+    "doctrine/dbal": "~2.5",
     "broadway/broadway": "~0.4"
   },
   "require-dev": {
