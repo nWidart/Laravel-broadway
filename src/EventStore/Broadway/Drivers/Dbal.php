@@ -29,7 +29,7 @@ class Dbal implements Driver
         $payloadSerializer = app('Broadway\Serializer\SerializerInterface');
         $metadataSerializer = app('Broadway\Serializer\SerializerInterface');
 
-        $table = $this->config->get('laravel-broadway::event-store.table', 'event_store');
+        $table = $this->config->get('broadway.event-store.table', 'event_store');
 
         return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table);
     }

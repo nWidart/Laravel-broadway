@@ -20,7 +20,7 @@ class Elasticsearch implements Driver
      */
     public function getDriver()
     {
-        $config = $this->config->get('laravel-broadway::read-model-connections.elasticsearch.config');
+        $config = $this->config->get('broadway.read-model-connections.elasticsearch.config');
 
         return new Client($config);
     }
