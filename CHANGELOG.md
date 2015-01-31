@@ -1,8 +1,16 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [0.x.x]() - T.B.D.
+## [0.3.0]() - T.B.D.
 
+### Added
+
+- Support for laravel 5
+- Default concrete class for `AggregateFactoryInterface` (bound to `PublicConstructorAggregateFactory`)
+
+### Removed 
+
+- Dropped support for laravel 4
 
 ## [0.2.1](https://github.com/nWidart/Laravel-broadway/releases/tag/0.2.1) - 2015-01-28
 
