@@ -20,7 +20,7 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=dev-develop
+composer require nwidart/laravel-broadway=~2.0
 ```
 
 ### Service Providers
