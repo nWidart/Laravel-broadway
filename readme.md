@@ -15,6 +15,11 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 
 **Laravel 5 package**
 
+| Laravel version  | Package version |
+| ---------------- | --------------- |
+| ~4.2  | ~2.0  |
+| ~5  | ~3.0 *(comming)*  |
+
 ## Installation
 
 ### Install via composer
