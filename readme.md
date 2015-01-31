@@ -13,7 +13,7 @@ It binds all needed interfaces for Broadway.
 
 For reference, I've built a [demo laravel application](https://github.com/nWidart/Laravel-Broadway-Demo) that uses this package and some event sourcing techniques. 
 
-**This branch is for Laravel 5**
+**Laravel 5 package**
 
 ## Installation
 
