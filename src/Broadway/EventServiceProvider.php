@@ -3,7 +3,7 @@
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Illuminate\Support\ServiceProvider;
-use Nwidart\LaravelBroadway\Commands\CreateEventStoreCommand;
+use Nwidart\LaravelBroadway\Console\CreateEventStoreCommand;
 
 class EventServiceProvider extends ServiceProvider
 {

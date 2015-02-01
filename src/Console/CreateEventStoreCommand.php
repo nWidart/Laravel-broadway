@@ -1,4 +1,4 @@
-<?php namespace Nwidart\LaravelBroadway\Commands;
+<?php namespace Nwidart\LaravelBroadway\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
