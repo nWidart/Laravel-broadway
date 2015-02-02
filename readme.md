@@ -173,15 +173,19 @@ To let broadway know which handlers are available you need to bind in the Larave
 
 It's important to know Command Handlers classes in broadway need to get a Event Store repository injected. 
 
-Now just pass an array of command handlers to the `laravelbroadway.command.registry` key out the IoC Container, like so:
+Now just pass either an array of command handlers to the `laravelbroadway.command.registry` key out the IoC Container or juste one class, like so:
 
 
 ``` php
 $partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
 
-$this->app['laravelbroadway.command.registry']->add([
+$this->app['laravelbroadway.command.registry']->subscribe([
     $partCommandHandler
 ]);
+
+// OR
+
+$this->app['laravelbroadway.command.registry']->subscribe($partCommandHandler);
 ```
 
 ### Event subscribers
@@ -193,9 +197,14 @@ Example:
 ``` php
 $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
 
-$this->app['laravelbroadway.event.registry']->add([
+$this->app['laravelbroadway.event.registry']->subscribe([
     $partsThatWereManfacturedProjector
 ]);
+
+// OR
+
+$this->app['laravelbroadway.event.registry']->subscribe($partsThatWereManfacturedProjector);
+
 ```
 
 All the rest are conventions from the Broadway package.
