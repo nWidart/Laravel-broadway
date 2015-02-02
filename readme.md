@@ -182,7 +182,7 @@ $someOtherCommandHandler = new PartCommandHandler($this->app['Modules\Things\Rep
 
 $this->app['laravelbroadway.command.registry']->subscribe([
     $partCommandHandler,
-    $someCommandHandler
+    $someOtherCommandHandler
 ]);
 
 // OR
@@ -203,7 +203,7 @@ $someOtherProjector = new SomeProjector($this->app['Modules\Things\Repositories\
 
 $this->app['laravelbroadway.event.registry']->subscribe([
     $partsThatWereManfacturedProjector,
-    $partsThatWereManfacturedProjector
+    $someOtherProjector
 ]);
 
 // OR
