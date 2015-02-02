@@ -2,7 +2,7 @@
 
 use Broadway\EventHandling\EventBusInterface;
 
-class EventRegistry implements Registry
+class EventRegistry extends BaseRegistry implements Registry
 {
     /**
      * @var EventBusInterface
@@ -17,10 +17,11 @@ class EventRegistry implements Registry
     /**
      * Subscribe the given array of projectors on the event bus
      * @param  array $projectors
-     * @return void
      */
-    public function add(array $projectors)
+    public function subscribe($projectors)
     {
+        $projectors = $this->isTraversable($projectors) ?: [$projectors];
+
         foreach ($projectors as $projector) {
             $this->eventBus->subscribe($projector);
         }

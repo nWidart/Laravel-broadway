@@ -4,7 +4,7 @@ interface Registry
 {
     /**
      * @param  array $handlers
-     * @return void
+     * @return
      */
-    public function add(array $handlers);
+    public function subscribe($handlers);
 }

@@ -2,7 +2,7 @@
 
 use Broadway\CommandHandling\CommandBusInterface;
 
-class CommandRegistry implements Registry
+class CommandRegistry extends BaseRegistry implements Registry
 {
     /**
      * @var CommandBusInterface
@@ -19,11 +19,13 @@ class CommandRegistry implements Registry
 
     /**
      * Subscribe the given array of command handlers on the command bus
-     * @param array $commandHandlers
+     * @param array $handlers
      */
-    public function add(array $commandHandlers)
+    public function subscribe($handlers)
     {
-        foreach ($commandHandlers as $commandHandler) {
+        $this->isTraversable($handlers) ?: [$handlers];
+
+        foreach ($handlers as $commandHandler) {
             $this->commandBus->subscribe($commandHandler);
         }
     }
