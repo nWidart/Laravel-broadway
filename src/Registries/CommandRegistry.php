@@ -1,7 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\Registries;
 
 use Broadway\CommandHandling\CommandBusInterface;
-use Nwidart\LaravelBroadway\src\Registries\Registry;
 
 class CommandRegistry implements Registry
 {

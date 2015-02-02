@@ -1,7 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\Registries;
 
 use Broadway\EventHandling\EventBusInterface;
-use Nwidart\LaravelBroadway\src\Registries\Registry;
 
 class EventRegistry implements Registry
 {

@@ -1,4 +1,4 @@
-<?php namespace Nwidart\LaravelBroadway\src\Registries;
+<?php namespace Nwidart\LaravelBroadway\Registries;
 
 interface Registry
 {
