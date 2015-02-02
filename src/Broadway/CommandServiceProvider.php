@@ -2,6 +2,7 @@
 
 use Broadway\CommandHandling\SimpleCommandBus;
 use Illuminate\Support\ServiceProvider;
+use Nwidart\LaravelBroadway\Registries\CommandRegistry;
 
 class CommandServiceProvider extends ServiceProvider
 {
@@ -10,29 +11,9 @@ class CommandServiceProvider extends ServiceProvider
         $this->app->singleton('Broadway\CommandHandling\CommandBusInterface', function () {
             return new SimpleCommandBus();
         });
-    }
 
-    public function boot()
-    {
-        $this->registerCommandSubscribers();
-    }
-
-    /**
-     * Register the user set subscribers on the command bus
-     */
-    private function registerCommandSubscribers()
-    {
-        try {
-            $subscribers = $this->app['broadway.command-subscribers'];
-        } catch (\ReflectionException $e) {
-            // fallback to other places where command subscribes could be defined
-            $subscribers = [];
-        }
-
-        foreach ($subscribers as $handler => $eventStoreRepository) {
-            $esRepository = $this->app[$eventStoreRepository];
-            $handler = new $handler($esRepository);
-            $this->app['Broadway\CommandHandling\CommandBusInterface']->subscribe($handler);
-        }
+        $this->app->bind('Nwidart\LaravelBroadway\Registries\CommandRegistry', function ($app) {
+            return new CommandRegistry($app['Broadway\CommandHandling\CommandBusInterface']);
+        });
     }
 }
