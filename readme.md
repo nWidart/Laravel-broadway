@@ -178,7 +178,7 @@ Now just pass either an array of command handlers to the `laravelbroadway.comman
 
 ``` php
 $partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
-$someOtherCommandHandler = new PartCommandHandler($this->app['Modules\Things\Repositories\EventStoreSomeRepository']);
+$someOtherCommandHandler = new SomeOtherCommandHandler($this->app['Modules\Things\Repositories\EventStoreSomeRepository']);
 
 $this->app['laravelbroadway.command.registry']->subscribe([
     $partCommandHandler,
@@ -199,7 +199,7 @@ Example:
 
 ``` php
 $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
-$someOtherProjector = new SomeProjector($this->app['Modules\Things\Repositories\ReadModelSomeRepository']);
+$someOtherProjector = new SomeOtherProjector($this->app['Modules\Things\Repositories\ReadModelSomeRepository']);
 
 $this->app['laravelbroadway.event.registry']->subscribe([
     $partsThatWereManfacturedProjector,
