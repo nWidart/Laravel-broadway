@@ -40,7 +40,7 @@ class EventServiceProvider extends ServiceProvider
             return new SimpleEventBus();
         });
 
-        $this->app->bind('Nwidart\LaravelBroadway\Registries\EventRegistry', function ($app) {
+        $this->app->singleton('laravelbroadway.event.registry', function ($app) {
             return new EventRegistry($app['Broadway\EventHandling\EventBusInterface']);
         });
     }

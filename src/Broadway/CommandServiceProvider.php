@@ -12,7 +12,7 @@ class CommandServiceProvider extends ServiceProvider
             return new SimpleCommandBus();
         });
 
-        $this->app->bind('Nwidart\LaravelBroadway\Registries\CommandRegistry', function ($app) {
+        $this->app->singleton('laravelbroadway.command.registry', function ($app) {
             return new CommandRegistry($app['Broadway\CommandHandling\CommandBusInterface']);
         });
     }
