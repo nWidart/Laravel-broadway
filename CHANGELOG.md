@@ -8,6 +8,11 @@ All notable changes to this project will be documented in this file.
 - Support for laravel 5
 - Default concrete class for `AggregateFactoryInterface` (bound to `PublicConstructorAggregateFactory`)
 
+### Changed
+
+- Registering Command Handlers : new public api for registering command handlers
+- Registering Projectors : new public api for registering projectors
+
 ### Removed 
 
 - Dropped support for laravel 4
