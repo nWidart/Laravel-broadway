@@ -4,44 +4,15 @@ use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\LaravelBroadway\Console\CreateEventStoreCommand;
+use Nwidart\LaravelBroadway\Registries\EventRegistry;
 
 class EventServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('Broadway\EventDispatcher\EventDispatcherInterface', function () {
-            return new EventDispatcher();
-        });
-
-        $this->app->singleton('Broadway\EventHandling\EventBusInterface', function () {
-            return new SimpleEventBus();
-        });
+        $this->registerBindings();
 
         $this->registerCommands();
-    }
-
-    public function boot()
-    {
-        $this->registerEventSubscribers();
-    }
-
-    /**
-     * Register the user set subscribers on the event bus
-     */
-    private function registerEventSubscribers()
-    {
-        try {
-            $subscribers = $this->app['broadway.event-subscribers'];
-        } catch (\ReflectionException $e) {
-            // fallback to other places where event subscribes could be defined
-            $subscribers = [];
-        }
-
-        foreach ($subscribers as $projector => $repository) {
-            $repository = $this->app[$repository];
-            $projector = new $projector($repository);
-            $this->app['Broadway\EventHandling\EventBusInterface']->subscribe($projector);
-        }
     }
 
     /**
@@ -54,5 +25,23 @@ class EventServiceProvider extends ServiceProvider
         });
 
         $this->commands('laravel-broadway::event-store::migrate');
+    }
+
+    /**
+     * Register bindings on the IoC Container
+     */
+    private function registerBindings()
+    {
+        $this->app->singleton('Broadway\EventDispatcher\EventDispatcherInterface', function () {
+            return new EventDispatcher();
+        });
+
+        $this->app->singleton('Broadway\EventHandling\EventBusInterface', function () {
+            return new SimpleEventBus();
+        });
+
+        $this->app->bind('Nwidart\LaravelBroadway\Registries\EventRegistry', function ($app) {
+            return new EventRegistry($app['Broadway\EventHandling\EventBusInterface']);
+        });
     }
 }
