@@ -23,8 +23,7 @@ class CommandRegistry implements Registry
      */
     public function add(array $commandHandlers)
     {
-        foreach ($commandHandlers as $commandHandler)
-        {
+        foreach ($commandHandlers as $commandHandler) {
             $this->commandBus->subscribe($commandHandler);
         }
     }

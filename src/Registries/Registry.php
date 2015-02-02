@@ -3,7 +3,7 @@
 interface Registry
 {
     /**
-     * @param array $handlers
+     * @param  array $handlers
      * @return void
      */
     public function add(array $handlers);

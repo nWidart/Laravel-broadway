@@ -10,7 +10,7 @@ class EventStorageServiceProvider extends ServiceProvider
             'Nwidart\LaravelBroadway\EventStore\EventStoreFactory',
             'Nwidart\LaravelBroadway\EventStore\Broadway\BroadwayEventStoreFactory'
         );
-        
+
         $this->app->bind(
             'Broadway\EventSourcing\AggregateFactory\AggregateFactoryInterface',
             'Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory'

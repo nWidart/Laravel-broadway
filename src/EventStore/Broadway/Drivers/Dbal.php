@@ -32,7 +32,7 @@ class Dbal implements Driver
         $table = $this->config->get('broadway.event-store.table', 'event_store');
 
         $app = app();
-        $app->singleton('Doctrine\DBAL\Connection', function() use ($connection) {
+        $app->singleton('Doctrine\DBAL\Connection', function () use ($connection) {
             return $connection;
         });
 
