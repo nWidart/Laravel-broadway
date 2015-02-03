@@ -20,7 +20,7 @@ class EventRegistry extends BaseRegistry implements Registry
      */
     public function subscribe($projectors)
     {
-        $projectors = $this->isTraversable($projectors) ?: [$projectors];
+        $projectors = $this->isTraversable($projectors) ? $projectors : [$projectors];
 
         foreach ($projectors as $projector) {
             $this->eventBus->subscribe($projector);

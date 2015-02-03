@@ -23,7 +23,7 @@ class CommandRegistry extends BaseRegistry implements Registry
      */
     public function subscribe($handlers)
     {
-        $this->isTraversable($handlers) ?: [$handlers];
+        $handlers = $this->isTraversable($handlers) ? $handlers : [$handlers];
 
         foreach ($handlers as $commandHandler) {
             $this->commandBus->subscribe($commandHandler);
