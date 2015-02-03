@@ -10,7 +10,7 @@ class BroadwayEventStoreFactory implements EventStoreFactory
      */
     public function make($driver)
     {
-        $driver = 'Nwidart\LaravelBroadway\EventStore\Broadway\Drivers\\'.ucfirst($driver);
+        $driver = 'Nwidart\LaravelBroadway\EventStore\Broadway\Drivers\\' . ucfirst($driver);
 
         return new $driver();
     }

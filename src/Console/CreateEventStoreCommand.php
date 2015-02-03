@@ -17,7 +17,7 @@ class CreateEventStoreCommand extends Command
         $migrations->createRepository();
 
         $migrator = app('migrator');
-        $migrator->run(__DIR__.'/../../migrations');
+        $migrator->run(__DIR__ . '/../../migrations');
 
         $this->info("Table [$table] created!");
     }
