@@ -173,7 +173,7 @@ To let broadway know which handlers are available you need to bind in the Larave
 
 It's important to know Command Handlers classes in broadway need to get a Event Store repository injected. 
 
-Now just pass either an array of command handlers to the `laravelbroadway.command.registry` key out the IoC Container or juste one class, like so:
+Now just pass either an array of command handlers to the `laravelbroadway.command.registry` key out the IoC Container or just one class, like so:
 
 
 ``` php
