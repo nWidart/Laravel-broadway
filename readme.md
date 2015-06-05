@@ -17,15 +17,15 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 
 | Laravel version  | Package version |
 | ---------------- | --------------- |
-| ~4.2  | ~2.0  |
-| ~5  | ~3.0   |
+| ~4.2  | ~0.2  |
+| ~5  | ~0.3   |
 
 ## Installation
 
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=~3.0
+composer require nwidart/laravel-broadway=~0.3
 ```
 
 ### Service Providers
