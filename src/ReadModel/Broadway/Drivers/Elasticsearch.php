@@ -22,6 +22,6 @@ class Elasticsearch implements Driver
     {
         $config = $this->config->get('broadway.read-model-connections.elasticsearch.config');
 
-        return new Client($config);
+        return ClientBuilder::fromConfig($config);
     }
 }
