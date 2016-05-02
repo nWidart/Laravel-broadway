@@ -39,6 +39,7 @@ You have a choice here, you can either use the main Service Provider which will 
 - [Serializers](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/SerializersServiceProvider.php)
 - [EventStorage](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/EventStorageServiceProvider.php)
 - [ReadModel](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/ReadModelServiceProvider.php)
+- [MetadataEnricher](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/MetadataEnricherServiceProvider.php)
 - [Support](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/SupportServiceProvider.php) (UuidGenerators,...)
 
 Or choose to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
@@ -79,6 +80,13 @@ Or choose to use only the Service providers you need. Don't know what you need ?
 
     ``` php
     'Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider'
+    ```
+    ```
+
+- MetadataEnricher
+
+    ``` php
+    'Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider'
     ```
 
 - Support
@@ -213,6 +221,94 @@ $this->app['laravelbroadway.event.registry']->subscribe($someOtherProjector);
 
 ```
 
+### Metadata Enricher
+
+Broadways event store table comes with a field called "metadata". Here we can store all kind of stuff which should be saved together with the particular event, but which is does not fit to the domain aka the payload.
+
+For example you like to store the ID of the current logged-in user or the IP or ...
+
+Broadway uses Decorators to manipulate the event stream. A decorator consumes one or more Enrichers, which provide the actual data (user ID, IP).
+Right before saving the event to the stream, the decorator will loop through the registered enrichers and apply the data.
+
+The following example assumes you added the global ServiceProvider of this package or at least the `Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider`. 
+
+First we create the enricher. In this example lets assume we are interested in the logged-in user. The enricher will add the user ID to the metadata and returns the modified metadata object. However, in some cases – like in Unit Tests - there is no logged-in user available. To tackle this, the user ID can injected via constructor.
+ 
+```php
+// CreatorEnricher.php
+
+class CreatorEnricher implements MetadataEnricherInterface
+{
+    /** @var int $creatorId */
+    private $creatorId;
+
+
+    /**
+     * The constructor
+     *
+     * @param int $creatorId
+     */
+    public function __construct($creatorId = null)
+    {
+        $this->creatorId = $creatorId;
+    }
+
+
+    /**
+     * @param Metadata $metadata
+     * @return Metadata
+     */
+    public function enrich(Metadata $metadata)
+    {
+        if ($this->creatorId !== null) {
+            $id = $this->creatorId;
+        } else {
+            $id = Auth::user()->id;
+        }
+
+        return $metadata->merge(Metadata::kv('createorId', $id));
+    }
+}
+```
+
+Second you need to register the Enricher to the decorator and pass the decorator to your repository  
+ 
+```php
+// YourServiceProvider.php
+
+/**
+ * Register the Metadata enrichers
+ */
+private function registerEnrichers()
+{
+    $enricher = new CreatorEnricher();
+    $this->app['laravelbroadway.enricher.registry']->subscribe([$enricher]);
+}
+
+$this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
+    $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
+    $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+    
+    $this->registerEnrichers();
+    
+    return new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class], [$app[EventStreamDecoratorInterface::class]);
+});
+```
+
+To retrieve the metadata you need to pass the DomainMessage as the 2nd parameter to an apply*-method in your projector.
+
+```php
+// PartsThatWhereCreatedProjector.php
+
+public function applyPartWasRenamedEvent(PartWasRenamedEvent $event, DomainMessage $domainMessage)
+{
+	$metaData = $domainMessage->getMetadata()->serialize();
+	$creator = User::find($metaData['creatorId']);    
+	
+	// Do something with the user
+}
+```
+    
 All the rest are conventions from the Broadway package.
 
 
