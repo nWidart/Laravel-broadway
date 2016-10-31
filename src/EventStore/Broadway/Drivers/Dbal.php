@@ -51,7 +51,7 @@ class Dbal implements Driver
         $connectionParams['dbname'] = $connectionParams['database'];
         $connectionParams['user'] = $connectionParams['username'];
         unset($connectionParams['database'], $connectionParams['username']);
-        $connectionParams['driver'] = "pdo_$driver";
+        $connectionParams['driver'] = "pdo_".$connectionParams['driver'];
 
         return $connectionParams;
     }
