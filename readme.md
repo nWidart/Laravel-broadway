@@ -81,7 +81,6 @@ Or choose to use only the Service providers you need. Don't know what you need ?
     ``` php
     'Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider'
     ```
-    ```
 
 - MetadataEnricher
 
