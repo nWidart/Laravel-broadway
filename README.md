@@ -47,7 +47,7 @@ Or choose to use only the Service providers you need. Don't know what you need ?
 #### Global Service Provider
  
  ``` php
-    'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider'
+    Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider::class
  ```
 
 #### Separate Service Providers
@@ -55,43 +55,43 @@ Or choose to use only the Service providers you need. Don't know what you need ?
  - CommandBus
  
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\CommandServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\CommandServiceProvider::class
     ```
     
 - EventBus
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\EventServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\EventServiceProvider::class
     ```
 
 - Serializers
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider::class
     ```
 
 - EventStorage
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider::class
     ```
 
 - ReadModel
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider::class
     ```
 
 - MetadataEnricher
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider::class
     ```
 
 - Support
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\SupportServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\SupportServiceProvider::class
     ```
 
 ### (Optional) Publish configuration file and migration
