@@ -18,14 +18,15 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 | Laravel version  | Package version |
 | ---------------- | --------------- |
 | ~4.2  | ~0.2  |
-| ~5  | ~0.3   |
+| ~5.0  | ~0.3   |
+| ~5.1+  | ~1.0   |
 
 ## Installation
 
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=~0.3
+composer require nwidart/laravel-broadway=~1.0
 ```
 
 ### Service Providers

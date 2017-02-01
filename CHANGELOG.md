@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [x.x.x]() - T.B.D.
 
-## [x.x.x]() - 2017-02-01
+## [1.0.0](https://github.com/nWidart/Laravel-broadway/releases/tag/1.0.0) - 2017-02-01
 
 ### Added
 
