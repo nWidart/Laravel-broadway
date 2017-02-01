@@ -18,9 +18,9 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=5.5.9",
     "doctrine/dbal": "~2.5",
-    "broadway/broadway": "0.8",
+    "broadway/broadway": "0.10",
     "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
   },
   "require-dev": {
