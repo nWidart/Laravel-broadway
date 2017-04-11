@@ -1,7 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [x.x.x]() - T.B.D.
+## [2.0.0]() - T.B.D.
+
+This is solely a compatibility update for broadway/broadway 1.0.0.
+
+Please read their [UPGRADE GUIDE](https://github.com/broadway/broadway/blob/master/UPGRADE.md) to see what needs updating in your codebase.
+
+__Notice__: This package does not require split out elasticsearch package, you will need to require that yourself. 
+We do, however, require the dbal driver.
+
+```bash
+composer require broadway/read-model-elasticsearch
+```
 
 ## [1.0.0](https://github.com/nWidart/Laravel-broadway/releases/tag/1.0.0) - 2017-02-01
 
