@@ -135,9 +135,9 @@ In the configuration file, you can choose which driver to use as an event store.
 Once done, you can bind your **EventStoreRepositories** in a Service Provider like so:
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
-    $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
-    $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+$this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, function ($app) {
+    $eventStore = $app[\Broadway\EventStore\EventStore::class];
+    $eventBus = $app[\Broadway\EventHandling\EventBus::class];
     return new MysqlEventStorePartRepository($eventStore, $eventBus);
 });
 ```
@@ -153,8 +153,8 @@ Once that's done you can bind your **ReadModelRepositories** in a Service Provid
 
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
-    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
+    $serializer = $app[\Broadway\Serializer\Serializer::class];
     return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
 });
 ```
@@ -162,8 +162,8 @@ $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function 
 For an In Memory read model as an example:
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
-    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository::class, function ($app) {
+    $serializer = $app[\Broadway\Serializer\Serializer::class];
     return new InMemoryReadModelPartRepository($app['Inmemory'], $serializer);
 });
 ```
@@ -185,8 +185,8 @@ Now just pass either an array of command handlers to the `laravelbroadway.comman
 
 
 ``` php
-$partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
-$someOtherCommandHandler = new SomeOtherCommandHandler($this->app['Modules\Things\Repositories\EventStoreSomeRepository']);
+$partCommandHandler = new PartCommandHandler($this->app[\Modules\Parts\Repositories\EventStorePartRepository::class]);
+$someOtherCommandHandler = new SomeOtherCommandHandler($this->app[\Modules\Things\Repositories\EventStoreSomeRepository::class]);
 
 $this->app['laravelbroadway.command.registry']->subscribe([
     $partCommandHandler,
@@ -206,7 +206,7 @@ This is pretty much the same as the command handlers, except that the event subs
 Example:
 
 ``` php
-$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app[\Modules\Parts\Repositories\ReadModelPartRepository']);
 $someOtherProjector = new SomeOtherProjector($this->app['Modules\Things\Repositories\ReadModelSomeRepository']);
 
 $this->app['laravelbroadway.event.registry']->subscribe([
@@ -237,7 +237,7 @@ First we create the enricher. In this example lets assume we are interested in t
 ```php
 // CreatorEnricher.php
 
-class CreatorEnricher implements MetadataEnricherInterface
+class CreatorEnricher implements MetadataEnricher
 {
     /** @var int $creatorId */
     private $creatorId;
@@ -285,13 +285,13 @@ private function registerEnrichers()
     $this->app['laravelbroadway.enricher.registry']->subscribe([$enricher]);
 }
 
-$this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
-    $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
-    $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+$this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, function ($app) {
+    $eventStore = $app[\Broadway\EventStore\EventStore::class];
+    $eventBus = $app[\Broadway\EventHandling\EventBus::class];
     
     $this->registerEnrichers();
     
-    return new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class], [$app[EventStreamDecoratorInterface::class]);
+    return new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class], [$app[EventStreamDecorator::class]);
 });
 ```
 
