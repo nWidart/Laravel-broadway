@@ -29,8 +29,6 @@ class Dbal implements Driver
         $payloadSerializer = app(\Broadway\Serializer\Serializer::class);
         $metadataSerializer = app(\Broadway\Serializer\Serializer::class);
 
-        $binaryUuidConverter = app(\Broadway\UuidGenerator\Converter\BinaryUuidConverter::class);
-
         $table = $this->config->get('broadway.event-store.table', 'event_store');
 
         $app = app();
@@ -38,7 +36,7 @@ class Dbal implements Driver
             return $connection;
         });
 
-        return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table, true, $binaryUuidConverter);
+        return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table, false, null);
     }
 
     /**
