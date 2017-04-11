@@ -20,7 +20,8 @@
   "require": {
     "php": ">=5.5.9",
     "doctrine/dbal": "~2.5",
-    "broadway/broadway": "0.10",
+    "broadway/broadway": "~1.0.0",
+    "broadway/event-store-dbal": "^0.1.2",
     "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
   },
   "require-dev": {
@@ -32,7 +33,7 @@
     }
   },
   "suggest": {
-    "elasticsearch/elasticsearch": "For persisting read models"
+    "broadway/read-model-elasticsearch": "For persisting read models in elasticsearch"
   },
   "minimum-stability": "dev",
   "prefer-stable": true

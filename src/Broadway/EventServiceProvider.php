@@ -1,6 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\Broadway;
 
-use Broadway\EventDispatcher\EventDispatcher;
+use Broadway\EventDispatcher\CallableEventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\LaravelBroadway\Console\CreateEventStoreCommand;
@@ -32,16 +32,16 @@ class EventServiceProvider extends ServiceProvider
      */
     private function registerBindings()
     {
-        $this->app->singleton('Broadway\EventDispatcher\EventDispatcherInterface', function () {
-            return new EventDispatcher();
+        $this->app->singleton(\Broadway\EventDispatcher\EventDispatcher::class, function () {
+            return new CallableEventDispatcher();
         });
 
-        $this->app->singleton('Broadway\EventHandling\EventBusInterface', function () {
+        $this->app->singleton(\Broadway\EventHandling\EventBus::class, function () {
             return new SimpleEventBus();
         });
 
         $this->app->singleton('laravelbroadway.event.registry', function ($app) {
-            return new EventRegistry($app['Broadway\EventHandling\EventBusInterface']);
+            return new EventRegistry($app[\Broadway\EventHandling\EventBus::class]);
         });
     }
 }

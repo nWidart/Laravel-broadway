@@ -36,7 +36,6 @@ class MetaDataEnricherRegistry extends BaseRegistry implements Registry
         }
     }
 
-
     /**
      * @return MetadataEnrichingEventStreamDecorator
      */

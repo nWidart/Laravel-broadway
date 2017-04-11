@@ -1,6 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\EventStore\Broadway\Drivers;
 
-use Broadway\EventStore\DBALEventStore;
+use Broadway\EventStore\Dbal\DBALEventStore;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 use Nwidart\LaravelBroadway\EventStore\Driver;
@@ -14,7 +14,7 @@ class Dbal implements Driver
 
     public function __construct()
     {
-        $this->config = app('Illuminate\Config\Repository');
+        $this->config = app(\Illuminate\Config\Repository::class);
     }
 
     /**
@@ -26,17 +26,19 @@ class Dbal implements Driver
 
         $connectionParams = $this->getStorageConnectionParameters();
         $connection = DriverManager::getConnection($connectionParams, $configuration);
-        $payloadSerializer = app('Broadway\Serializer\SerializerInterface');
-        $metadataSerializer = app('Broadway\Serializer\SerializerInterface');
+        $payloadSerializer = app(\Broadway\Serializer\Serializer::class);
+        $metadataSerializer = app(\Broadway\Serializer\Serializer::class);
+
+        $binaryUuidConverter = app(\Broadway\UuidGenerator\Converter\BinaryUuidConverter::class);
 
         $table = $this->config->get('broadway.event-store.table', 'event_store');
 
         $app = app();
-        $app->singleton('Doctrine\DBAL\Connection', function () use ($connection) {
+        $app->singleton(\Doctrine\DBAL\Connection::class, function () use ($connection) {
             return $connection;
         });
 
-        return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table);
+        return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, $table, true, $binaryUuidConverter);
     }
 
     /**

@@ -9,13 +9,13 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->registerConfiguration();
         $this->registerMigrations();
 
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\EventServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\CommandServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\SupportServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider');
-        $this->app->register('Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider');
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\EventServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\CommandServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\SupportServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider::class);
+        $this->app->register(\Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider::class);
     }
 
     /**

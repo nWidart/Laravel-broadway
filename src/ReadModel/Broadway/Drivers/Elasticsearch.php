@@ -12,7 +12,7 @@ class Elasticsearch implements Driver
 
     public function __construct()
     {
-        $this->config = app('Illuminate\Config\Repository');
+        $this->config = app(\Illuminate\Config\Repository::class);
     }
 
     /**
