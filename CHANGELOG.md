@@ -7,8 +7,7 @@ This is solely a compatibility update for broadway/broadway 1.0.0.
 
 Please read their [UPGRADE GUIDE](https://github.com/broadway/broadway/blob/master/UPGRADE.md) to see what needs updating in your codebase.
 
-__Notice__: This package does not require split out elasticsearch package, you will need to require that yourself. 
-We do, however, require the dbal driver.
+__Notice__: Broadway has split out a bunch of packages from its main repository (dbal / elasticsearch / sagas); This package has opted to require only the new dbal package. If you depend on ElasticSearch you will need to require it yourself.
 
 ```bash
 composer require broadway/read-model-elasticsearch
