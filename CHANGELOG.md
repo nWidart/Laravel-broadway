@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [2.0.0]() - T.B.D.
+## [2.0.0](https://github.com/nWidart/Laravel-broadway/releases/tag/1.0.0) - 2017-08-22.
 
 This is solely a compatibility update for broadway/broadway 1.0.0.
 
