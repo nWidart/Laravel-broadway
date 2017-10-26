@@ -22,7 +22,7 @@
     "doctrine/dbal": "~2.5",
     "broadway/broadway": "~1.0.0",
     "broadway/event-store-dbal": "^0.1.2",
-    "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
+    "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*"
   },
   "require-dev": {
     "phpunit/phpunit": "4.0"
