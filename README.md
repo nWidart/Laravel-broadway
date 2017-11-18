@@ -19,7 +19,7 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 | ---------------- | --------------- |
 | ~4.2  | ~0.2  |
 | ~5.0  | ~0.3   |
-| ~5.1+  | ~1.0   |
+| ~5.1+  | ~2.0   |
 
 ## Installation
 
