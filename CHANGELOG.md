@@ -1,7 +1,42 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [x.x.x]() - T.B.D.
+## [2.0.1](https://github.com/nWidart/Laravel-broadway/releases/tag/2.0.1) - 2017-11-18
+
+### Added
+
+Support for laravel 5.5
+
+## [2.0.0](https://github.com/nWidart/Laravel-broadway/releases/tag/2.0.0) - 2017-08-22.
+
+This is solely a compatibility update for broadway/broadway 1.0.0.
+
+Please read their [UPGRADE GUIDE](https://github.com/broadway/broadway/blob/master/UPGRADE.md) to see what needs updating in your codebase.
+
+__Notice__: Broadway has split out a bunch of packages from its main repository (dbal / elasticsearch / sagas); This package has opted to require only the new dbal package. If you depend on ElasticSearch you will need to require it yourself.
+
+```bash
+composer require broadway/read-model-elasticsearch
+```
+
+## [1.0.0](https://github.com/nWidart/Laravel-broadway/releases/tag/1.0.0) - 2017-02-01
+
+### Added
+
+- Support for laravel 5.4
+
+### Changed
+
+- Updated broadway to 0.10
+- Fixed DBAL connection using connection name instead of driver for pdo driver. (#17)
+- Event store uuid column changed to char (#15)
+- Make the stream decorator and enrichers available (#12)
+- Create correct version of ElasticSearch client (#8)
+- Fix error instantiating ElasticSearch client (#6)
+
+### Removed 
+
+- Dropped support for laravel 5.0
 
 ## [0.3.0](https://github.com/nWidart/Laravel-broadway/releases/tag/0.3.0) - 2015-02-03
 

@@ -1,18 +1,18 @@
 <?php namespace Nwidart\LaravelBroadway\Registries;
 
-use Broadway\CommandHandling\CommandBusInterface;
+use Broadway\CommandHandling\CommandBus;
 
 class CommandRegistry extends BaseRegistry implements Registry
 {
     /**
-     * @var CommandBusInterface
+     * @var CommandBus
      */
     private $commandBus;
 
     /**
-     * @param CommandBusInterface $commandBus
+     * @param CommandBus $commandBus
      */
-    public function __construct(CommandBusInterface $commandBus)
+    public function __construct(CommandBus $commandBus)
     {
         $this->commandBus = $commandBus;
     }

@@ -22,7 +22,7 @@ class CreateEventStoreTable extends Migration
         Schema::create($this->eventStoreTableName, function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('uuid', 36);
+            $table->char('uuid', 36);
             $table->integer('playhead')->unsigned();
             $table->text('metadata');
             $table->text('payload');

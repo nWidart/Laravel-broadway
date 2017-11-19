@@ -18,14 +18,15 @@ For reference, I've built a [demo laravel application](https://github.com/nWidar
 | Laravel version  | Package version |
 | ---------------- | --------------- |
 | ~4.2  | ~0.2  |
-| ~5  | ~0.3   |
+| ~5.0  | ~0.3   |
+| ~5.1+  | ~2.0   |
 
 ## Installation
 
 ### Install via composer
 
 ```
-composer require nwidart/laravel-broadway=~0.3
+composer require nwidart/laravel-broadway=~1.0
 ```
 
 ### Service Providers
@@ -34,19 +35,20 @@ To finish the installation you need to add the service providers.
 
 You have a choice here, you can either use the main Service Provider which will load the following:
  
-- [CommandBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/CommandServiceProvider.php)
-- [EventBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/EventServiceProvider.php)
-- [Serializers](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/SerializersServiceProvider.php)
-- [EventStorage](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/EventStorageServiceProvider.php)
-- [ReadModel](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/ReadModelServiceProvider.php)
-- [Support](https://github.com/nWidart/Laravel-broadway/blob/master/src/Nwidart/LaravelBroadway/Broadway/SupportServiceProvider.php) (UuidGenerators,...)
+- [CommandBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/CommandServiceProvider.php)
+- [EventBus](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/EventServiceProvider.php)
+- [Serializers](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/SerializersServiceProvider.php)
+- [EventStorage](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/EventStorageServiceProvider.php)
+- [ReadModel](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/ReadModelServiceProvider.php)
+- [MetadataEnricher](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/MetadataEnricherServiceProvider.php)
+- [Support](https://github.com/nWidart/Laravel-broadway/blob/master/src/Broadway/SupportServiceProvider.php) (UuidGenerators,...)
 
 Or choose to use only the Service providers you need. Don't know what you need ? Use the Global Service Provider provided.
 
 #### Global Service Provider
  
  ``` php
-    'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider'
+    Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider::class
  ```
 
 #### Separate Service Providers
@@ -54,37 +56,43 @@ Or choose to use only the Service providers you need. Don't know what you need ?
  - CommandBus
  
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\CommandServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\CommandServiceProvider::class
     ```
     
 - EventBus
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\EventServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\EventServiceProvider::class
     ```
 
 - Serializers
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\SerializersServiceProvider::class
     ```
 
 - EventStorage
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\EventStorageServiceProvider::class
     ```
 
 - ReadModel
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\ReadModelServiceProvider::class
+    ```
+
+- MetadataEnricher
+
+    ``` php
+    Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider::class
     ```
 
 - Support
 
     ``` php
-    'Nwidart\LaravelBroadway\Broadway\SupportServiceProvider'
+    Nwidart\LaravelBroadway\Broadway\SupportServiceProvider::class
     ```
 
 ### (Optional) Publish configuration file and migration
@@ -127,9 +135,9 @@ In the configuration file, you can choose which driver to use as an event store.
 Once done, you can bind your **EventStoreRepositories** in a Service Provider like so:
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
-    $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
-    $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+$this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, function ($app) {
+    $eventStore = $app[\Broadway\EventStore\EventStore::class];
+    $eventBus = $app[\Broadway\EventHandling\EventBus::class];
     return new MysqlEventStorePartRepository($eventStore, $eventBus);
 });
 ```
@@ -145,8 +153,8 @@ Once that's done you can bind your **ReadModelRepositories** in a Service Provid
 
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
-    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
+    $serializer = $app[\Broadway\Serializer\Serializer::class];
     return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
 });
 ```
@@ -154,8 +162,8 @@ $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function 
 For an In Memory read model as an example:
 
 ``` php
-$this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
-    $serializer = $app['Broadway\Serializer\SerializerInterface'];
+$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository::class, function ($app) {
+    $serializer = $app[\Broadway\Serializer\Serializer::class];
     return new InMemoryReadModelPartRepository($app['Inmemory'], $serializer);
 });
 ```
@@ -177,8 +185,8 @@ Now just pass either an array of command handlers to the `laravelbroadway.comman
 
 
 ``` php
-$partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
-$someOtherCommandHandler = new SomeOtherCommandHandler($this->app['Modules\Things\Repositories\EventStoreSomeRepository']);
+$partCommandHandler = new PartCommandHandler($this->app[\Modules\Parts\Repositories\EventStorePartRepository::class]);
+$someOtherCommandHandler = new SomeOtherCommandHandler($this->app[\Modules\Things\Repositories\EventStoreSomeRepository::class]);
 
 $this->app['laravelbroadway.command.registry']->subscribe([
     $partCommandHandler,
@@ -198,7 +206,7 @@ This is pretty much the same as the command handlers, except that the event subs
 Example:
 
 ``` php
-$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app[\Modules\Parts\Repositories\ReadModelPartRepository']);
 $someOtherProjector = new SomeOtherProjector($this->app['Modules\Things\Repositories\ReadModelSomeRepository']);
 
 $this->app['laravelbroadway.event.registry']->subscribe([
@@ -213,6 +221,94 @@ $this->app['laravelbroadway.event.registry']->subscribe($someOtherProjector);
 
 ```
 
+### Metadata Enricher
+
+Broadways event store table comes with a field called "metadata". Here we can store all kind of stuff which should be saved together with the particular event, but which is does not fit to the domain aka the payload.
+
+For example you like to store the ID of the current logged-in user or the IP or ...
+
+Broadway uses Decorators to manipulate the event stream. A decorator consumes one or more Enrichers, which provide the actual data (user ID, IP).
+Right before saving the event to the stream, the decorator will loop through the registered enrichers and apply the data.
+
+The following example assumes you added the global ServiceProvider of this package or at least the `Nwidart\LaravelBroadway\Broadway\MetadataEnricherServiceProvider`. 
+
+First we create the enricher. In this example lets assume we are interested in the logged-in user. The enricher will add the user ID to the metadata and returns the modified metadata object. However, in some cases – like in Unit Tests - there is no logged-in user available. To tackle this, the user ID can injected via constructor.
+ 
+```php
+// CreatorEnricher.php
+
+class CreatorEnricher implements MetadataEnricher
+{
+    /** @var int $creatorId */
+    private $creatorId;
+
+
+    /**
+     * The constructor
+     *
+     * @param int $creatorId
+     */
+    public function __construct($creatorId = null)
+    {
+        $this->creatorId = $creatorId;
+    }
+
+
+    /**
+     * @param Metadata $metadata
+     * @return Metadata
+     */
+    public function enrich(Metadata $metadata)
+    {
+        if ($this->creatorId !== null) {
+            $id = $this->creatorId;
+        } else {
+            $id = Auth::user()->id;
+        }
+
+        return $metadata->merge(Metadata::kv('createorId', $id));
+    }
+}
+```
+
+Second you need to register the Enricher to the decorator and pass the decorator to your repository  
+ 
+```php
+// YourServiceProvider.php
+
+/**
+ * Register the Metadata enrichers
+ */
+private function registerEnrichers()
+{
+    $enricher = new CreatorEnricher();
+    $this->app['laravelbroadway.enricher.registry']->subscribe([$enricher]);
+}
+
+$this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, function ($app) {
+    $eventStore = $app[\Broadway\EventStore\EventStore::class];
+    $eventBus = $app[\Broadway\EventHandling\EventBus::class];
+    
+    $this->registerEnrichers();
+    
+    return new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class], [$app[EventStreamDecorator::class]);
+});
+```
+
+To retrieve the metadata you need to pass the DomainMessage as the 2nd parameter to an apply*-method in your projector.
+
+```php
+// PartsThatWhereCreatedProjector.php
+
+public function applyPartWasRenamedEvent(PartWasRenamedEvent $event, DomainMessage $domainMessage)
+{
+	$metaData = $domainMessage->getMetadata()->serialize();
+	$creator = User::find($metaData['creatorId']);    
+	
+	// Do something with the user
+}
+```
+    
 All the rest are conventions from the Broadway package.
 
 

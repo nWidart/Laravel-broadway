@@ -1,15 +1,15 @@
 <?php namespace Nwidart\LaravelBroadway\Registries;
 
-use Broadway\EventHandling\EventBusInterface;
+use Broadway\EventHandling\EventBus;
 
 class EventRegistry extends BaseRegistry implements Registry
 {
     /**
-     * @var EventBusInterface
+     * @var EventBus
      */
     private $eventBus;
 
-    public function __construct(EventBusInterface $eventBus)
+    public function __construct(EventBus $eventBus)
     {
         $this->eventBus = $eventBus;
     }

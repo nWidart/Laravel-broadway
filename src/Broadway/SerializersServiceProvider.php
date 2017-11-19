@@ -7,7 +7,7 @@ class SerializersServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('Broadway\Serializer\SerializerInterface', function () {
+        $this->app->bind(\Broadway\Serializer\Serializer::class, function () {
             return new SimpleInterfaceSerializer();
         });
     }
