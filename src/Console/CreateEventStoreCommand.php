@@ -8,7 +8,7 @@ class CreateEventStoreCommand extends Command
     protected $name = 'broadway:event-store:migrate';
     protected $description = 'This will create the events store table based on the name in the configuration';
 
-    public function fire()
+    public function handle()
     {
         $table = $this->argument('table');
         $this->laravel->config['broadway.event-store-table'] = $table;
