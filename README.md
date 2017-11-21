@@ -31,6 +31,23 @@ composer require nwidart/laravel-broadway=~1.0
 
 ### Service Providers
 
+#### Laravel 5.5 (Auto discovery) 
+
+If you are using Laravel 5.5, this package provides auto discovery, meaning you can start coding – the Global Service Provider is already added. In case you need just some Service Providers, please add the following section to your applications composer.json:
+
+```
+ "extra": {
+    "laravel": {
+      "dont-discover": [
+        "nWidart/Laravel-broadway"
+      ]
+    }
+  }
+
+```  
+
+#### Laravel 5.4
+
 To finish the installation you need to add the service providers. 
 
 You have a choice here, you can either use the main Service Provider which will load the following:
