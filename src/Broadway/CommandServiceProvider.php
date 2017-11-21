@@ -8,12 +8,12 @@ class CommandServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('Broadway\CommandHandling\CommandBusInterface', function () {
+        $this->app->singleton(\Broadway\CommandHandling\CommandBus::class, function () {
             return new SimpleCommandBus();
         });
 
         $this->app->singleton('laravelbroadway.command.registry', function ($app) {
-            return new CommandRegistry($app['Broadway\CommandHandling\CommandBusInterface']);
+            return new CommandRegistry($app[\Broadway\CommandHandling\CommandBus::class]);
         });
     }
 }

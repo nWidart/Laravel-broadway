@@ -1,6 +1,6 @@
 <?php namespace Nwidart\LaravelBroadway\ReadModel\Broadway\Drivers;
 
-use Elasticsearch\Client;
+use Broadway\ReadModel\ElasticSearch\ElasticSearchClientFactory;
 use Nwidart\LaravelBroadway\ReadModel\Driver;
 
 class Elasticsearch implements Driver
@@ -12,7 +12,7 @@ class Elasticsearch implements Driver
 
     public function __construct()
     {
-        $this->config = app('Illuminate\Config\Repository');
+        $this->config = app(\Illuminate\Config\Repository::class);
     }
 
     /**
@@ -22,6 +22,6 @@ class Elasticsearch implements Driver
     {
         $config = $this->config->get('broadway.read-model-connections.elasticsearch.config');
 
-        return new Client($config);
+        return (new ElasticSearchClientFactory())->create($config);
     }
 }

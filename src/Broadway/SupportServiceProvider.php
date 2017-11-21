@@ -7,7 +7,7 @@ class SupportServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('Broadway\UuidGenerator\UuidGeneratorInterface', function () {
+        $this->app->bind(\Broadway\UuidGenerator\UuidGeneratorInterface::class, function () {
             return new Version4Generator();
         });
     }
