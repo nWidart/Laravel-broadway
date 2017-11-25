@@ -36,5 +36,12 @@
     "broadway/read-model-elasticsearch": "For persisting read models in elasticsearch"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nwidart\\LaravelBroadway\\LaravelBroadwayServiceProvider"
+      ]
+    }
+  }
 }
