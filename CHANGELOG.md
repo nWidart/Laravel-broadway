@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.2](https://github.com/nWidart/Laravel-broadway/releases/tag/2.0.2) - 2018-11-22
+
+### Added
+
+Support for Laravel 5.6 and 5.7
+
 ## [2.0.1](https://github.com/nWidart/Laravel-broadway/releases/tag/2.0.1) - 2017-11-18
 
 ### Added
