@@ -12,14 +12,22 @@ class CreateEventStoreTable extends Migration
      */
     private $eventStoreTableName;
 
+    private $eventStoreConnection;
+
     public function __construct()
     {
         $this->eventStoreTableName = Config::get('broadway.event-store-table', 'event_store');
+        $this->eventStoreConnection = Config::get('broadway.event-store.connection', 'default');
+
+        if ($this->eventStoreConnection === 'default') {
+            $config = app(\Illuminate\Config\Repository::class);
+            $this->eventStoreConnection = $config->get('database.default');
+        }
     }
 
     public function up()
     {
-        Schema::create($this->eventStoreTableName, function (Blueprint $table) {
+        Schema::connection($this->eventStoreConnection)->create($this->eventStoreTableName, function (Blueprint $table) {
             $table->increments('id');
 
             $table->char('uuid', 36);
