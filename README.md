@@ -170,7 +170,7 @@ Once that's done you can bind your **ReadModelRepositories** in a Service Provid
 
 
 ``` php
-$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
+$this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository::class, function ($app) {
     $serializer = $app[\Broadway\Serializer\Serializer::class];
     return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
 });
@@ -223,8 +223,8 @@ This is pretty much the same as the command handlers, except that the event subs
 Example:
 
 ``` php
-$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app[\Modules\Parts\Repositories\ReadModelPartRepository']);
-$someOtherProjector = new SomeOtherProjector($this->app['Modules\Things\Repositories\ReadModelSomeRepository']);
+$partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app[\Modules\Parts\Repositories\ReadModelPartRepository::class]);
+$someOtherProjector = new SomeOtherProjector($this->app[\Modules\Things\Repositories\ReadModelSomeRepository::class]);
 
 $this->app['laravelbroadway.event.registry']->subscribe([
     $partsThatWereManfacturedProjector,
