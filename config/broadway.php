@@ -14,6 +14,7 @@ return [
     'event-store' => [
         'table' => 'event_store',
         'driver' => 'dbal',
+        'connection' => 'default',
     ],
 
     /*

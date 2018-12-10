@@ -47,8 +47,8 @@ class Dbal implements Driver
      */
     private function getStorageConnectionParameters()
     {
-        $driver = $this->config->get('database.default');
-        $connectionParams = $this->config->get("database.connections.{$driver}");
+        $databaseConnectionName = $this->config->get('broadway.event-store.connection', 'default');
+        $connectionParams = $this->config->get("database.connections.{$databaseConnectionName}");
 
         $connectionParams['dbname'] = $connectionParams['database'];
         $connectionParams['user'] = $connectionParams['username'];
