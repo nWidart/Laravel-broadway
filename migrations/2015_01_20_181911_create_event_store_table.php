@@ -20,8 +20,7 @@ class CreateEventStoreTable extends Migration
         $this->eventStoreConnection = Config::get('broadway.event-store.connection', 'default');
 
         if ($this->eventStoreConnection === 'default') {
-            $config = app(\Illuminate\Config\Repository::class);
-            $this->eventStoreConnection = $config->get('database.default');
+            $this->eventStoreConnection = null;
         }
     }
 
