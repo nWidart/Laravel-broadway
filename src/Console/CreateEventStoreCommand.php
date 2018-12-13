@@ -11,7 +11,7 @@ class CreateEventStoreCommand extends Command
     public function handle()
     {
         $table = $this->argument('table');
-        $this->laravel->config['broadway.event-store-table'] = $table;
+        $this->laravel->config['broadway.event-store.table'] = $table;
 
         $migrations = app('migration.repository');
         $migrations->createRepository();
