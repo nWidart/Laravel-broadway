@@ -1,5 +1,5 @@
 {
-  "name": "nwidart/laravel-broadway",
+  "name": "alessandrominoccheri/laravel-broadway",
   "description": "A Laravel adapter for the Broadway ES/CQRS package.",
   "license": "MIT",
   "keywords": [
