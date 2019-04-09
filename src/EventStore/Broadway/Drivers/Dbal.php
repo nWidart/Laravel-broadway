@@ -48,6 +48,11 @@ class Dbal implements Driver
     private function getStorageConnectionParameters()
     {
         $databaseConnectionName = $this->config->get('broadway.event-store.connection', 'default');
+
+        if ($databaseConnectionName === 'default') {
+            $databaseConnectionName = $this->config->get('database.default');
+        }
+
         $connectionParams = $this->config->get("database.connections.{$databaseConnectionName}");
 
         $connectionParams['dbname'] = $connectionParams['database'];
