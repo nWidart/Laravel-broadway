@@ -33,7 +33,8 @@
     }
   },
   "suggest": {
-    "broadway/read-model-elasticsearch": "For persisting read models in elasticsearch"
+    "broadway/read-model-elasticsearch": "For persisting read models in elasticsearch",
+    "alessandrominoccheri/broadway-dynamodb": "For persisting into a dynamodb database"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

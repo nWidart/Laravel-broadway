@@ -163,6 +163,23 @@ $this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, fu
 For an in memory Event Store, all you need to do is change the driver in the configuration file and probably add a new event store repository implementation with an adequate name.
 
 
+If you would like to use dynamodb to store your events you can use this configuration:
+
+```
+'event-store' => [
+    'table' => event_store,
+    'driver' => 'dynamoDb',
+    'connection' => 'mysql_events',
+    'endpoint' => 'aws_endpoint',
+    'access_key_id' => 'access_key_id',
+    'secret_access_key' => 'secret_access_key',
+    'region' => 'region'
+],
+```
+
+You need to use you endpoint, access_key_id, secret_access_key and region aws parameters and it works fine
+
+
 ### Read Model
 
 To set a read model in your application you first need to set the wanted read model in the package configuration. 
